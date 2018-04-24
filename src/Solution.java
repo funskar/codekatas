@@ -1,16 +1,14 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Solution {
-	public static void main(String[] args) {
-		new Solution().solve();
-	}
+    public static void main(String[] args) {
+        new Solution().solve();
+    }
 
-	public void solve() {
-		Scanner in = new Scanner(System.in);
-//		int n = in.nextInt();
-        String a = "+";
-        System.out.println(a == "+");
-	}
+    public void solve() {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+    }
 }
 
 
