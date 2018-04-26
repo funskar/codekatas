@@ -1,12 +1,14 @@
 package Questions;
 
+//https://leetcode.com/articles/largest-sum-of-averages/
+
 public class MaxSumAverages {
 
 
     public static void main(String[] args) {
         int[] A = {1, 2, 3, 4, 5, 6, 7, 8};
         int[] B = {9, 1, 2, 3, 9};
-        new MaxSumAverages().solve(B, 2);
+        new MaxSumAverages().solve(B, 3);
     }
 
     public void solve(int[] A, int k) {
@@ -32,10 +34,6 @@ public class MaxSumAverages {
         }
         if (k == 0) {
             dp[k][i] = getAvg(P, 0, i);
-            return dp[k][i];
-        }
-        if (i == 0) {
-            dp[k][i] = P[i];
             return dp[k][i];
         }
         dp[k][i] = getAvg(P, 0, i);
