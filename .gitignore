@@ -1,2 +1,6 @@
-.idea/*
-.settings/*
+*.iml
+.classpath
+.project
+.settings/
+.idea/
+.out/
