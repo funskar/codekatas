@@ -28,7 +28,6 @@ public class StringInterleaving {
             return dp[i][j];
         }
         if (i == 0 && j == 0) {
-            dp[i][j] = 1;
         } else if (i == 0) {
             dp[i][j] = (s2.charAt(j - 1) == s3.charAt(i + j - 1)) ? isInterleaveTopDown(dp, s1, s2, s3, i, j - 1) : 0;
         } else if (j == 0) {
