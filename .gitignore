@@ -1,6 +1,6 @@
 *.iml
+out/
 .classpath
 .project
 .settings/
 .idea/
-.out/
