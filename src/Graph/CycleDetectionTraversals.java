@@ -1,12 +1,14 @@
+package Graph;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Solution {
+public class CycleDetectionTraversals {
 
     public static void main(String[] args) {
-        new Solution().solve();
+        new CycleDetectionTraversals().solve();
     }
 
     public void solve() {
@@ -33,9 +35,9 @@ public class Solution {
     }
 
     public boolean detectCycleDFS(ArrayList<Integer>[] graph) {
-        int[] vis = new int[graph.length];
+        boolean[] vis = new boolean[graph.length];
         for (int i = 0; i < graph.length; i++) {
-            if (vis[i] == 0) {
+            if (!vis[i]) {
                 if (depthFirstTraversal(graph, vis, i, -1)) {
                     return true;
                 }
@@ -44,19 +46,17 @@ public class Solution {
         return false;
     }
 
-    public boolean depthFirstTraversal(ArrayList<Integer>[] graph, int[] vis, int node, int parent) {
-        if (vis[node] == 1)
-            return true;
-        vis[node] = 1;
+    public boolean depthFirstTraversal(ArrayList<Integer>[] graph, boolean[] vis,
+                                       int node, int parent) {
+        vis[node] = true;
         for (int neighbour : graph[node]) {
-            if (neighbour != parent && neighbour != node) {
+            if (!vis[node]) {
                 if (depthFirstTraversal(graph, vis, neighbour, node)) {
                     return true;
                 }
+            } else if (neighbour != parent && neighbour != node) {
+                return true;
             }
-            //Another way
-            //Check if it's not visited -> call the node
-            //If it's visited, check if it's not parent -> return true.
         }
         return false;
     }
