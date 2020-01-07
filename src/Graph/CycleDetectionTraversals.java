@@ -50,7 +50,7 @@ public class CycleDetectionTraversals {
                                        int node, int parent) {
         vis[node] = true;
         for (int neighbour : graph[node]) {
-            if (!vis[node]) {
+            if (!vis[neighbour]) {
                 if (depthFirstTraversal(graph, vis, neighbour, node)) {
                     return true;
                 }
@@ -71,6 +71,7 @@ public class CycleDetectionTraversals {
         for (int i = 0; i < graph.length; i++) {
             if (!vis[i]) {
                 queue.add(i);
+                vis[i] = true;
                 if (breadthFirstTraversal(graph, vis, queue, parent)) {
                     return true;
                 }
@@ -83,10 +84,10 @@ public class CycleDetectionTraversals {
                                          Queue<Integer> queue, int[] parent) {
         while (!queue.isEmpty()) {
             int node = queue.poll();
-            vis[node] = true;
             for (int neighbour : graph[node]) {
                 if (!vis[neighbour]) {
                     parent[neighbour] = node;
+                    vis[neighbour] = true;
                     queue.add(neighbour);
                 } else if (neighbour != parent[node] && neighbour != node) {
                     return true;
